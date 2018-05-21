@@ -1,5 +1,7 @@
+#link to install boxstarter & this script
+#START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/pcwork57/System-prep/master/prepDesktop.ps1
 #######download lantrx desktop scrips########################
-iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/lantrxdesktop.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'))
 install-lantrxonlinescripts -desktop
 #######install package managers########################
 $scriptpolicy = get-ExecutionPolicy
@@ -22,12 +24,12 @@ choco source add -n=lantrx-depo -s "'http://nupkg.lantrxinc.com/repository/App_D
 
 if(!(test-path -path "c:\temp\hp-remove.csv")){
 new-item -path c:\ -name temp -itemtype directory
-New-Item -Path c:\temp\hp-remove.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/hp-remove.csv')
-New-Item -Path c:\temp\hp-install.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/hp-install.csv')
-New-Item -path c:\temp\packages.config -type file -force -value (New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/packages.xml')
+New-Item -Path c:\temp\remove.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/remove.csv')
+New-Item -Path c:\temp\install.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/install.csv')
+New-Item -path c:\temp\packages.config -type file -force -value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/packages.xml')
 
-install-desktop -remove -csvfile c:\temp\hp-remove.csv
-install-desktop -install -csvfile c:\temp\hp-install.csv
+install-desktop -remove -csvfile c:\temp\remove.csv
+install-desktop -install -csvfile c:\temp\install.csv
 }
 
 
@@ -38,8 +40,8 @@ choco install -y 7zip.install
 
 #clean up download files
 remove-item c:\temp\packages.config
-remove-item c:\temp\hp-remove.csv
-remove-item c:\temp\hp-install.csv
+remove-item c:\temp\remove.csv
+remove-item c:\temp\install.csv
 
 #clean up desktop
 Remove-Item C:\Users\Public\Desktop\Skype*.lnk -Force
