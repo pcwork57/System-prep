@@ -6,7 +6,7 @@ install-lantrxonlinescripts -desktop
 #######install package managers########################
 $scriptpolicy = get-ExecutionPolicy
 Set-ExecutionPolicy remotesigned -Force
-if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/bootstrapper.ps1')); get-boxstarter -Force}
+#if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/bootstrapper.ps1')); get-boxstarter -Force}
 #if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}
 #Set-ExecutionPolicy $scriptpolicy  #if need to put the execution level back to orginal
 remove-item "C:\Users\Public\desktop\Boxstarter Shell.lnk" -force
@@ -22,7 +22,7 @@ choco source add -n=lantrx-depo -s "'http://nupkg.lantrxinc.com/repository/App_D
 
 #install function for removal of HP software
 
-if(!(test-path -path "c:\temp\hp-remove.csv")){
+if(!(test-path -path "c:\temp\remove.csv")){
 new-item -path c:\ -name temp -itemtype directory
 New-Item -Path c:\temp\remove.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/remove.csv')
 New-Item -Path c:\temp\install.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/install.csv')
