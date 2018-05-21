@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <packages>
+    <package id="7zip.install" />
+    <package id="googlechrome" />
+    <package id="powershell" />
+  </packages>
+</xml>
