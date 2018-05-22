@@ -1,5 +1,7 @@
 #link to install boxstarter & this script
 #START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/pcwork57/System-prep/master/prepDesktop.ps1
+#allow reboot
+#START https://boxstarter.org/package/url?https://raw.githubusercontent.com/pcwork57/System-prep/master/prepDesktop.ps1
 #######download lantrx desktop scrips########################
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'))
 #install-lantrxonlinescripts -desktop
