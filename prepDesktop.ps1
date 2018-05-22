@@ -2,14 +2,14 @@
 #START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/pcwork57/System-prep/master/prepDesktop.ps1
 #######download lantrx desktop scrips########################
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'))
-install-lantrxonlinescripts -desktop
+#install-lantrxonlinescripts -desktop
 #######install package managers########################
-$scriptpolicy = get-ExecutionPolicy
-Set-ExecutionPolicy remotesigned -Force
-#if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/bootstrapper.ps1')); get-boxstarter -Force}
-#if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}
+#$scriptpolicy = get-ExecutionPolicy
+#et-ExecutionPolicy remotesigned -Force
+if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/bootstrapper.ps1')); get-boxstarter -Force}
+if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}
 #Set-ExecutionPolicy $scriptpolicy  #if need to put the execution level back to orginal
-remove-item "C:\Users\Public\desktop\Boxstarter Shell.lnk" -force
+#emove-item "C:\Users\Public\desktop\Boxstarter Shell.lnk" -force
 
 #setup windows explorer to show file extenstions
 Set-WindowsExplorerOptions -EnableShowFileExtension
