@@ -18,6 +18,8 @@ powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex
 write-output "installing chocolatey"
 powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}}
 
+if (Test-PendingReboot) { Invoke-Reboot }
+
 #Set-ExecutionPolicy $scriptpolicy  #if need to put the execution level back to orginal
 #emove-item "C:\Users\Public\desktop\Boxstarter Shell.lnk" -force
 
@@ -43,6 +45,7 @@ install-desktop -remove -csvfile c:\temp\remove.csv -verbose
 install-desktop -install -csvfile c:\temp\install.csv -verbose
 }
 
+if (Test-PendingReboot) { Invoke-Reboot }
 
 #install preset packages
 #choco install -y c:\temp\packages.config
@@ -58,6 +61,6 @@ remove-item c:\temp\install.csv
 Remove-Item C:\Users\Public\Desktop\Skype*.lnk -Force
 Remove-Item 'C:\Users\Public\Desktop\HP Touchpoint*.lnk' -force
 
-
+if (Test-PendingReboot) { Invoke-Reboot }
 
 
