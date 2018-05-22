@@ -4,10 +4,18 @@
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'))
 #install-lantrxonlinescripts -desktop
 #######install package managers########################
+$env:PSExecutionPolicyPreference = "remotesigned"
+write-output "setting all users profile for lantrx desktop"
+powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'));install-lantrxonlinescripts -desktop}
+write-output "setting execution policy remotesigned"
+powershell {set-ExecutionPolicy remotesigned -Force}
 #$scriptpolicy = get-ExecutionPolicy
-#et-ExecutionPolicy remotesigned -Force
-if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/bootstrapper.ps1')); get-boxstarter -Force}
-if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}
+#set-ExecutionPolicy remotesigned -Force
+write-output "installing boxtstarter"
+powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/bootstrapper.ps1')); get-boxstarter -Force}}
+write-output "installing chocolatey"
+powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}}
+
 #Set-ExecutionPolicy $scriptpolicy  #if need to put the execution level back to orginal
 #emove-item "C:\Users\Public\desktop\Boxstarter Shell.lnk" -force
 
@@ -15,6 +23,7 @@ if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.N
 Set-WindowsExplorerOptions -EnableShowFileExtension
 
 #setup lantrx package repository
+write-output "setting lantrx package repository"
 choco source remove -n=lantrx-depo
 choco source add -n=lantrx-depo -s "'http://nupkg.lantrxinc.com/repository/App_Depo/'"
 
