@@ -37,8 +37,8 @@ New-Item -Path c:\temp\remove.csv -Type file -force -Value (New-Object System.Ne
 New-Item -Path c:\temp\install.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/install.csv')
 New-Item -path c:\temp\packages.config -type file -force -value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/packages.xml')
 
-install-desktop -remove -csvfile c:\temp\remove.csv
-install-desktop -install -csvfile c:\temp\install.csv
+install-desktop -remove -csvfile c:\temp\remove.csv -verbose
+install-desktop -install -csvfile c:\temp\install.csv -verbose
 }
 
 
