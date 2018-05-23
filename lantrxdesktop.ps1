@@ -853,11 +853,7 @@ Set-ItemProperty -Path "HKCR:\Applications\photoviewer.dll\shell\open\DropTarget
 ##########
 # Restart
 ##########
-Write-Host
-#Write-Host "Press any key to restart your system..." -ForegroundColor Black -BackgroundColor White
-#$key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 Write-Host "You will need to Restart your system"
-#Restart-Computer
 
 }
 
