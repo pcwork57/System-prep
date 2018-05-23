@@ -2,26 +2,26 @@
 #START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/pcwork57/System-prep/master/prepDesktop.ps1
 #allow reboot
 #START https://boxstarter.org/package/url?https://raw.githubusercontent.com/pcwork57/System-prep/master/prepDesktop.ps1
+
 #######download lantrx desktop scrips########################
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'))
 #install-lantrxonlinescripts -desktop
+write-output "setting all users profile for lantrx desktop"
+powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'));install-lantrxonlinescripts -desktop} > null
+
 #######install package managers########################
 $env:PSExecutionPolicyPreference = "remotesigned"
-write-output "setting all users profile for lantrx desktop"
-powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'));install-lantrxonlinescripts -desktop}
 write-output "setting execution policy remotesigned"
 powershell {set-ExecutionPolicy remotesigned -Force}
-#$scriptpolicy = get-ExecutionPolicy
-#set-ExecutionPolicy remotesigned -Force
 write-output "installing boxtstarter"
 powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/bootstrapper.ps1')); get-boxstarter -Force}}
 write-output "installing chocolatey"
 powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}}
 
 if (Test-PendingReboot) { Invoke-Reboot }
+write-output "pending reboot: $(Test-PendingReboot)"
 
-#Set-ExecutionPolicy $scriptpolicy  #if need to put the execution level back to orginal
-#emove-item "C:\Users\Public\desktop\Boxstarter Shell.lnk" -force
+#remove-item "C:\Users\Public\desktop\Boxstarter Shell.lnk" -force
 
 #setup windows explorer to show file extenstions
 Set-WindowsExplorerOptions -EnableShowFileExtension
@@ -60,6 +60,13 @@ remove-item c:\temp\install.csv
 #clean up desktop
 Remove-Item C:\Users\Public\Desktop\Skype*.lnk -Force
 Remove-Item 'C:\Users\Public\Desktop\HP Touchpoint*.lnk' -force
+
+write-output "scrubing windows 10"
+clean-win10scrub
+#powershell {clean-win10scrub}
+
+write-output "clearing start menu"
+powershell {Clean-win10startmenu}
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
