@@ -82,4 +82,3 @@ write-output "clearing start menu"
 powershell {Clean-win10startmenu}
 
 if (Test-PendingReboot) { Invoke-Reboot }
-
