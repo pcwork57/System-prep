@@ -61,6 +61,14 @@ remove-item c:\temp\install.csv
 Remove-Item C:\Users\Public\Desktop\Skype*.lnk -Force
 Remove-Item 'C:\Users\Public\Desktop\HP Touchpoint*.lnk' -force
 
+write-output "removing all apps from new accounts"
+Get-appxprovisionedpackage –online | where-object {$_.packagename –notlike “*store*”} | Remove-AppxProvisionedPackage -online
+
+write-output "removing all apps from all current accounts on pc"
+Get-AppxPackage -AllUsers | where-object {$_.name –notlike “*store*”} | Remove-AppxPackage
+
+if (Test-PendingReboot) { Invoke-Reboot }
+
 write-output "scrubing windows 10"
 clean-win10scrub
 #powershell {clean-win10scrub}
