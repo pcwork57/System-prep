@@ -62,10 +62,10 @@ Remove-Item C:\Users\Public\Desktop\Skype*.lnk -Force
 Remove-Item 'C:\Users\Public\Desktop\HP Touchpoint*.lnk' -force
 
 write-output "removing all apps from new accounts"
-powershell {Get-appxprovisionedpackage –online | where-object {$_.packagename –notlike "*store*"} | Remove-AppxProvisionedPackage -online}
+powershell {Get-appxprovisionedpackage –online | where-object {$_.packagename -notlike "*store*"} | Remove-AppxProvisionedPackage -online}
 
 write-output "removing all apps from all current accounts on pc"
-powershell {Get-AppxPackage -AllUsers | where-object {$_.name –notlike "*store*"} | Remove-AppxPackage}
+powershell {Get-AppxPackage -AllUsers | where-object {$_.name -notlike "*store*"} | Remove-AppxPackage}
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
