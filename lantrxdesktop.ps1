@@ -960,6 +960,7 @@ function Clean-win10startmenu{
 		#Import-StartLayout c:\temp\no-start-menu.xml -MountPath c:\
 		
 		Remove-Item HKCU:\Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache -Force -Confirm:$false -Recurse
+		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "SearchboxTaskbarMode" -Type DWord -Value 0
 		Get-Process explorer | Stop-Process
 	} #end process
 	End
