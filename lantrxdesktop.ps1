@@ -730,34 +730,34 @@ Remove-Item -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6
 
 # Uninstall default Microsoft applications
 Write-Host "Uninstalling default Microsoft applications..."
-Get-AppxPackage "Microsoft.3DBuilder" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.BingFinance" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.BingNews" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.BingSports" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.BingWeather" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.Getstarted" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.MicrosoftOfficeHub" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.MicrosoftSolitaireCollection" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.Office.OneNote" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.People" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.SkypeApp" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.Windows.Photos" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.WindowsAlarms" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.WindowsCamera" | Remove-AppxPackage
-Get-AppxPackage "microsoft.windowscommunicationsapps" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.WindowsMaps" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.WindowsPhone" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.WindowsSoundRecorder" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.XboxApp" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.ZuneMusic" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.ZuneVideo" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.AppConnector" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.ConnectivityStore" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.Office.Sway" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.Messaging" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.CommsPhone" | Remove-AppxPackage
-Get-AppxPackage "9E2F88E3.Twitter" | Remove-AppxPackage
-Get-AppxPackage "king.com.CandyCrushSodaSaga" | Remove-AppxPackage
+Get-AppxPackage "Microsoft.3DBuilder" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.BingFinance" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.BingNews" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.BingSports" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.BingWeather" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.Getstarted" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.MicrosoftOfficeHub" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.MicrosoftSolitaireCollection" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.Office.OneNote" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.People" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.SkypeApp" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.Windows.Photos" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.WindowsAlarms" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.WindowsCamera" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "microsoft.windowscommunicationsapps" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.WindowsMaps" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.WindowsPhone" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.WindowsSoundRecorder" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.XboxApp" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.ZuneMusic" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.ZuneVideo" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.AppConnector" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.ConnectivityStore" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.Office.Sway" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.Messaging" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.CommsPhone" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "9E2F88E3.Twitter" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "king.com.CandyCrushSodaSaga" | Remove-AppxPackage -AllUsers
 
 # Install default Microsoft applications
 # Add-AppxPackage -DisableDevelopmentMode -Register "$($(Get-AppXPackage -AllUsers "Microsoft.3DBuilder").InstallLocation)\AppXManifest.xml"
