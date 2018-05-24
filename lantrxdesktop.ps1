@@ -729,6 +729,7 @@ Remove-Item -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6
 # Start-Process $onedrive -NoNewWindow
 
 # Uninstall default Microsoft applications
+<#
 Write-Host "Uninstalling default Microsoft applications..."
 Get-AppxPackage "Microsoft.3DBuilder" | Remove-AppxPackage -AllUsers
 Get-AppxPackage "Microsoft.BingFinance" | Remove-AppxPackage -AllUsers
@@ -758,6 +759,9 @@ Get-AppxPackage "Microsoft.Messaging" | Remove-AppxPackage -AllUsers
 Get-AppxPackage "Microsoft.CommsPhone" | Remove-AppxPackage -AllUsers
 Get-AppxPackage "9E2F88E3.Twitter" | Remove-AppxPackage -AllUsers
 Get-AppxPackage "king.com.CandyCrushSodaSaga" | Remove-AppxPackage -AllUsers
+#>
+Get-appxprovisionedpackage –online | where-object {$_.packagename -notlike "*store*"} | Remove-AppxProvisionedPackage -online -ErrorAction SilentlyContinue
+Get-AppxPackage -AllUsers | where-object {$_.name -notlike "*store*"} | Remove-AppxPackage -allusers -ErrorAction SilentlyContinue
 
 # Install default Microsoft applications
 # Add-AppxPackage -DisableDevelopmentMode -Register "$($(Get-AppXPackage -AllUsers "Microsoft.3DBuilder").InstallLocation)\AppXManifest.xml"
