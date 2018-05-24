@@ -894,33 +894,7 @@ function remove-pinapp{
 	return "App '$appname' unpinned from Start"
 }
 
-#cleans up windows 10 bloat wear
-function clean-win10setup{
-$rappx = "*Microsoft.BingFinance*","*Microsoft.BingNews*","*Microsoft.BingSports*",
-          "*Microsoft.BingWeather*","*Microsoft.SkypeApp*","*Microsoft.XboxApp*","*Microsoft.ZuneMusic*",
-          "*Microsoft.ZuneVideo*","*Microsoft.WindowsMaps*","*Microsoft.WindowsPhone*","*Twitter*",
-          "*Microsoft.Advertising.Xaml*","*Microsoft.XboxGame*","*Microsoft.XboxIdentityProvider*",
-          "*Microsoft.Office.OneNote*","*Microsoft.Office.Sway*","*Microsoft.MicrosoftSolitaireCollection*",
-          "*Microsoft.WindowsMaps*","*Microsoft.Messaging*","*Microsoft.MicrosoftOfficeHub*",
-          "*CandyCrushSodaSaga*","*Microsoft.CommsPhone*","*PicsArt-PhotoStudio*","*Minecraft*"
-$appx = Get-AppxPackage
-foreach($rapp in $rappx)
-{
-$apps = $appx | where {$_.packagefullname -like $rapp}
-foreach($app in $apps)
-{
-write-output "removing $app.packagefullname"
-$app | Remove-AppxPackage
-}
-}
-pin-app "Movies & TV" - unpin
-pin-app "Phone Companion" - unpin
-pin-app "flipboard" - unpin
-pin-app "PicsArt - Photo Studio" - unpin
-pin-app "Minecraft :Windows 10 Edition Beta" - unpin
-
-}
-
+#########removed slean-win10setup
 function Clean-win10startmenu{
 <#
 	.SYNOPSIS
