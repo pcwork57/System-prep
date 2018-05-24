@@ -761,7 +761,7 @@ Get-AppxPackage "9E2F88E3.Twitter" | Remove-AppxPackage -AllUsers
 Get-AppxPackage "king.com.CandyCrushSodaSaga" | Remove-AppxPackage -AllUsers
 #>
 Get-appxprovisionedpackage –online | where-object {$_.packagename -notlike "*store*"} | Remove-AppxProvisionedPackage -online -ErrorAction SilentlyContinue
-Get-AppxPackage -AllUsers | where-object {$_.name -notlike "*store*"} | Remove-AppxPackage -allusers -ErrorAction SilentlyContinue
+Get-AppxPackage -AllUsers | where-object {$_.name -notlike "*store*"} | Remove-AppxPackage -ErrorAction SilentlyContinue
 
 # Install default Microsoft applications
 # Add-AppxPackage -DisableDevelopmentMode -Register "$($(Get-AppXPackage -AllUsers "Microsoft.3DBuilder").InstallLocation)\AppXManifest.xml"
