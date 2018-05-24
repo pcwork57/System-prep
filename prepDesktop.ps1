@@ -46,6 +46,8 @@ install-desktop -remove -csvfile c:\temp\remove.csv -verbose
 install-desktop -install -csvfile c:\temp\install.csv -verbose
 }
 
+move-item "C:\Users\Public\desktop\Boxstarter Shell.lnk" c:\temp -force
+
 if (Test-PendingReboot) { Invoke-Reboot }
 
 #install preset packages
