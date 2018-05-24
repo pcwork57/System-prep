@@ -730,8 +730,8 @@ Remove-Item -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6
 
 # Uninstall default Microsoft applications
 Write-Host "Uninstalling default Microsoft applications..."
-Get-appxprovisionedpackage –online | where-object {$_.packagename -notlike "*store*"} | Remove-AppxProvisionedPackage -online -ErrorAction SilentlyContinue
-Get-AppxPackage -AllUsers | where-object {$_.name -notlike "*store*"} | Remove-AppxPackage -ErrorAction SilentlyContinue
+#Get-appxprovisionedpackage –online | where-object {$_.packagename -notlike "*store*"} | Remove-AppxProvisionedPackage -online -ErrorAction SilentlyContinue
+#Get-AppxPackage -AllUsers | where-object {$_.name -notlike "*store*"} | Remove-AppxPackage -ErrorAction SilentlyContinue
 
 
 # Install default Microsoft applications
