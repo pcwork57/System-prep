@@ -64,8 +64,8 @@ Remove-Item 'C:\Users\Public\Desktop\HP Touchpoint*.lnk' -force
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
-write-output "scrubing windows 10"
-Start-Process -FilePath "powershell" -ArgumentList '{clean-win10scrub;Start-Sleep -Seconds 20}' -WindowStyle Normal
+write-output "scrubing windows 10 running in seperate windows due to boxstarter web install issue"
+Start-Process -FilePath "powershell" -ArgumentList '-command "&clean-win10scrub' -WindowStyle Normal -Wait
 #clean-win10scrub
 #powershell {clean-win10scrub}
 
