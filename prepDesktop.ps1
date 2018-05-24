@@ -4,7 +4,7 @@
 #START https://boxstarter.org/package/url?https://raw.githubusercontent.com/pcwork57/System-prep/master/prepDesktop.ps1
 #
 $env:PSExecutionPolicyPreference = "remotesigned"
-$env:ErrorActionPreference = "Continue"
+#$env:ErrorActionPreference = "Continue"
 #$ErrorActionPreference = "SilentlyContinue"
 #######download lantrx desktop scrips########################
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'))
