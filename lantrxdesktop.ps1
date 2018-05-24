@@ -885,7 +885,6 @@ function clean-win10setup{
 	$app | Remove-AppxPackage
 	}
 	}
-	#pin-app "Movies & TV" - unpin
 	pin-app "Phone Companion" - unpin
 	pin-app "flipboard" - unpin
 	pin-app "PicsArt - Photo Studio" - unpin
