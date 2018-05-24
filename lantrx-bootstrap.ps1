@@ -97,7 +97,7 @@ function remove-lantrxonlinescripts {
     )
     
     begin {
-        $lantrxfilelocaiton = "http://help.lantrxinc.com/powershell/"
+        $lantrxfilelocaiton = "https://raw.githubusercontent.com/pcwork57/System-prep/master/"
     }#end begin
     process {
         switch ($PSCmdlet.ParameterSetName) {
