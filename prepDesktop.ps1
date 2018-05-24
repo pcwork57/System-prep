@@ -65,7 +65,7 @@ Remove-Item 'C:\Users\Public\Desktop\HP Touchpoint*.lnk' -force
 if (Test-PendingReboot) { Invoke-Reboot }
 
 write-output "scrubing windows 10"
-Start-Process -FilePath "powershell" -ArgumentList '{lean-win10scrub}' -WindowStyle Normal
+Start-Process -FilePath "powershell" -ArgumentList '-noexit {lean-win10scrub}' -WindowStyle Normal
 #clean-win10scrub
 #powershell {clean-win10scrub}
 
