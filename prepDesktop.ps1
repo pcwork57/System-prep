@@ -50,8 +50,9 @@ if (Test-PendingReboot) { Invoke-Reboot }
 
 #install preset packages
 #choco install -y c:\temp\packages.config
-#choco install -y googlechrome --ignore-checksum
-#choco install -y 7zip.install --ignore-checksum
+choco install -y googlechrome --ignore-checksum
+choco install -y 7zip.install --ignore-checksum
+choco install -y powershell --ignore-checksum
 
 #clean up download files
 remove-item c:\temp\packages.config
