@@ -729,9 +729,36 @@ Remove-Item -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6
 # Start-Process $onedrive -NoNewWindow
 
 # Uninstall default Microsoft applications
+Write-Host "Uninstalling default Microsoft applications..."
+Get-AppxPackage "Microsoft.3DBuilder" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.BingFinance" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.BingNews" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.BingSports" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.BingWeather" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.Getstarted" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.MicrosoftOfficeHub" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.MicrosoftSolitaireCollection" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.Office.OneNote" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.People" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.SkypeApp" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.Windows.Photos" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.WindowsAlarms" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.WindowsCamera" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "microsoft.windowscommunicationsapps" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.WindowsMaps" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.WindowsPhone" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.WindowsSoundRecorder" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.XboxApp" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.ZuneMusic" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.ZuneVideo" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.AppConnector" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.ConnectivityStore" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.Office.Sway" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.Messaging" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "Microsoft.CommsPhone" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "9E2F88E3.Twitter" | Remove-AppxPackage -AllUsers
+Get-AppxPackage "king.com.CandyCrushSodaSaga" | Remove-AppxPackage -AllUsers
 
-Get-appxprovisionedpackage –online | where-object {$_.packagename -notlike "*store*"} | Remove-AppxProvisionedPackage -online -ErrorAction SilentlyContinue
-Get-AppxPackage -AllUsers | where-object {$_.name -notlike "*store*"} | Remove-AppxPackage -ErrorAction SilentlyContinue
 
 # Install default Microsoft applications
 # Add-AppxPackage -DisableDevelopmentMode -Register "$($(Get-AppXPackage -AllUsers "Microsoft.3DBuilder").InstallLocation)\AppXManifest.xml"
@@ -865,6 +892,33 @@ function remove-pinapp{
 }
 
 #########removed slean-win10setup
+#cleans up windows 10 bloat wear
+function clean-win10setup{
+	$rappx = "*Microsoft.BingFinance*","*Microsoft.BingNews*","*Microsoft.BingSports*",
+			  "*Microsoft.BingWeather*","*Microsoft.SkypeApp*","*Microsoft.XboxApp*","*Microsoft.ZuneMusic*",
+			  "*Microsoft.ZuneVideo*","*Microsoft.WindowsMaps*","*Microsoft.WindowsPhone*","*Twitter*",
+			  "*Microsoft.Advertising.Xaml*","*Microsoft.XboxGame*","*Microsoft.XboxIdentityProvider*",
+			  "*Microsoft.Office.OneNote*","*Microsoft.Office.Sway*","*Microsoft.MicrosoftSolitaireCollection*",
+			  "*Microsoft.WindowsMaps*","*Microsoft.Messaging*","*Microsoft.MicrosoftOfficeHub*",
+			  "*CandyCrushSodaSaga*","*Microsoft.CommsPhone*","*PicsArt-PhotoStudio*","*Minecraft*"
+	$appx = Get-AppxPackage
+	foreach($rapp in $rappx)
+	{
+	$apps = $appx | where {$_.packagefullname -like $rapp}
+	foreach($app in $apps)
+	{
+	write-output "removing $app.packagefullname"
+	$app | Remove-AppxPackage
+	}
+	}
+	pin-app "Movies & TV" - unpin
+	pin-app "Phone Companion" - unpin
+	pin-app "flipboard" - unpin
+	pin-app "PicsArt - Photo Studio" - unpin
+	pin-app "Minecraft :Windows 10 Edition Beta" - unpin
+	
+	}
+	
 function Clean-win10startmenu{
 <#
 	.SYNOPSIS
