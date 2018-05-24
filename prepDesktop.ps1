@@ -3,6 +3,9 @@
 #allow reboot
 #START https://boxstarter.org/package/url?https://raw.githubusercontent.com/pcwork57/System-prep/master/prepDesktop.ps1
 
+$env:PSExecutionPolicyPreference = "remotesigned"
+$env:ErrorActionPreference = "Continue"
+#$ErrorActionPreference = "SilentlyContinue"
 #######download lantrx desktop scrips########################
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'))
 #install-lantrxonlinescripts -desktop
@@ -10,7 +13,7 @@ write-output "setting all users profile for lantrx desktop"
 powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'));install-lantrxonlinescripts -desktop} > null
 
 #######install package managers########################
-$env:PSExecutionPolicyPreference = "remotesigned"
+
 write-output "setting execution policy remotesigned"
 powershell {set-ExecutionPolicy remotesigned -Force}
 write-output "installing boxtstarter"
