@@ -67,6 +67,9 @@ Remove-Item 'C:\Users\Public\Desktop\HP Touchpoint*.lnk' -force
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
+$osversion = Get-WmiObject -Class Win32_OperatingSystem | ForEach-Object -MemberName Caption
+
+if($osversion -like "*Windows 10*"){
 write-output "scrubing windows 10 running in seperate windows due to boxstarter web install issue"
 Start-Process -FilePath "powershell" -ArgumentList '-command "&clean-win10scrub' -WindowStyle Normal -Wait
 #clean-win10scrub
@@ -74,5 +77,6 @@ Start-Process -FilePath "powershell" -ArgumentList '-command "&clean-win10scrub'
 
 write-output "clearing start menu"
 powershell {Clean-win10startmenu}
+}
 
 if (Test-PendingReboot) { Invoke-Reboot }
