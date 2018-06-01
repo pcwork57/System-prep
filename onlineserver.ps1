@@ -1,5 +1,5 @@
 Write-Output "!!!! Importing Lantrx PowerShell Server Scrips !!!!"
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrx-bootstrap.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinebootstrap.ps1'))
 #connects to exchange powershell from another admin system
 function connect-ADexchange{
     <#

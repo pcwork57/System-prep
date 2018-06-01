@@ -7,16 +7,19 @@ $env:PSExecutionPolicyPreference = "remotesigned"
 #$env:ErrorActionPreference = "Continue"
 #$ErrorActionPreference = "SilentlyContinue"
 #######download lantrx desktop scrips########################
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinedesktop.ps1'))
 #install-lantrxonlinescripts -desktop
 write-output "setting all users profile for lantrx desktop"
-powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'));install-lantrxonlinescripts -desktop} > null
+powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinedesktop.ps1'));install-lantrxonlinescripts -desktop} > null
 
 #######install package managers########################
 
 write-output "setting execution policy remotesigned"
 powershell {set-ExecutionPolicy remotesigned -Force}
 write-output "installing boxtstarter"
+
+##### need to change to boxstarter ps1 link
+
 powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/bootstrapper.ps1')); get-boxstarter -Force}}
 write-output "installing chocolatey"
 powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}}
