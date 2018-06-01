@@ -1,7 +1,7 @@
-Write-Output "!!!! Importing Lantrx PowerShell Desktop Scrips !!!!"
+Write-Output "!!!! Importing online PowerShell Desktop Scrips !!!!"
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinebootstrap.ps1'))
 #installed powershell scripts link into powershell 
-# pulling from lantrx-bootstrap.ps1
+# pulling from onlinebootstrap.ps1
 
 #used to install applications from csv file
 function install-desktop{
@@ -1136,5 +1136,5 @@ function Get-lantrxagent{
 	} #end end
 } #end function
 
-write-output "!!!! Finished installing scripts from Lantrx !!!!"
+write-output "!!!! Finished installing scripts from online !!!!"
 Write-Output "!!!! All scripts are Require Powershell V3 or higher !!!!"

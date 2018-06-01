@@ -6,10 +6,10 @@
 $env:PSExecutionPolicyPreference = "remotesigned"
 #$env:ErrorActionPreference = "Continue"
 #$ErrorActionPreference = "SilentlyContinue"
-#######download lantrx desktop scrips########################
+#######download online desktop scrips########################
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinedesktop.ps1'))
 #install-lantrxonlinescripts -desktop
-write-output "setting all users profile for lantrx desktop"
+write-output "setting all users profile for online desktop"
 powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinedesktop.ps1'));install-lantrxonlinescripts -desktop} > null
 
 #######install package managers########################
@@ -20,7 +20,7 @@ write-output "installing boxtstarter"
 
 ##### need to change to boxstarter ps1 link
 
-powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/bootstrapper.ps1')); get-boxstarter -Force}}
+powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('https://boxstarter.org/bootstrapper.ps1')); get-boxstarter -Force}}
 write-output "installing chocolatey"
 powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}}
 
@@ -32,8 +32,8 @@ write-output "pending reboot: $(Test-PendingReboot)"
 #setup windows explorer to show file extenstions
 Set-WindowsExplorerOptions -EnableShowFileExtension
 
-#setup lantrx package repository
-write-output "setting lantrx package repository"
+#setup online package repository
+write-output "setting online package repository"
 choco source remove -n=lantrx-depo
 choco source add -n=lantrx-depo -s "'http://nupkg.lantrxinc.com/repository/App_Depo/'"
 

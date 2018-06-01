@@ -1,4 +1,4 @@
-Write-Output "!!!! Importing Lantrx PowerShell Exchange Scrips !!!!"
+Write-Output "!!!! Importing online PowerShell Exchange Scrips !!!!"
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinebootstrap.ps1'))
 
 function Set-BasicAuthentication([string]$appName, [bool]$value)
@@ -175,4 +175,4 @@ remove-item -path $cmdlocation
 }
 
 
-write-output "!!!! Finished installing scripts from Lantrx !!!!"
+write-output "!!!! Finished installing scripts from online !!!!"

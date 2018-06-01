@@ -1,4 +1,4 @@
-Write-Output "!!!! Importing Lantrx PowerShell Server Scrips !!!!"
+Write-Output "!!!! Importing online PowerShell Server Scrips !!!!"
 iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinebootstrap.ps1'))
 #connects to exchange powershell from another admin system
 function connect-ADexchange{
@@ -781,4 +781,4 @@ function Get-uptime{
 }
 
 
-write-output "!!!! Finished installing scripts from Lantrx !!!!"
+write-output "!!!! Finished installing scripts from online !!!!"
