@@ -6,19 +6,28 @@ Notes:
 Open powershell with adminrights and past line into shell to add functions
 
 
-Lantrx Desktop Prep:
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master//prepdesktop.ps1'))
+online Desktop Prep:
+test reboot link
+test no reboot link
 
-Download lantrx scrips based on os version:
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master//lantrxdesktop.ps1'))
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master//lantrxhyperv.ps1'))
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master//lantrxserver.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinebootstrap.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/prepDesktop.ps1'))
 
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master//lantrx-exchange.ps1'))
+Download online scrips based on os version:
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinedesktop.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinehyperv.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlineserver.ps1'))
+
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlineexchange.ps1'))
 
 Package Install ONLY:
 iex ((New-Object System.Net.WebClient).DownloadString('https://boxstarter.org/bootstrapper.ps1')); get-boxstarter -Force
-iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) 
+iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+t.txt
+
+for local testing
+iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/testing/lantrxdesktop.ps1'))
 ##################################################
 
 t.txt:
