@@ -1,5 +1,6 @@
 Write-Output "!!!! Importing Lantrx PowerShell Desktop Scrips !!!!"
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrx-bootstrap.ps1'))
+#load bootstrap url
+iex ((New-Object System.Net.WebClient).DownloadString('rebrand.ly/c7cfd'))
 #installed powershell scripts link into powershell 
 # pulling from lantrx-bootstrap.ps1
 

