@@ -1,6 +1,6 @@
 Write-Output "!!!! Importing Lantrx PowerShell Server Scrips !!!!"
 #load bootstrap url
-iex ((New-Object System.Net.WebClient).DownloadString('rebrand.ly/c7cfd'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/c7cfd'))
 #connects to exchange powershell from another admin system
 function connect-ADexchange{
     <#
