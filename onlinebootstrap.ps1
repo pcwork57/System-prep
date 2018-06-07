@@ -1,5 +1,5 @@
 #installed powershell scripts link into powershell 
-function install-lantrxonlinescripts{
+function install-onlinescripts{
     <#
     .Synopsis
         Short description
@@ -20,41 +20,41 @@ function install-lantrxonlinescripts{
         # Hyper-V online scripts
         [parameter(ParameterSetName='Hyper-V')][switch]$hyperv,
         # Windows server online scrips
-        [parameter(ParameterSetName='Server')][switch]$server,
+        [parameter(ParameterSetName='Server')][switch]$server
         #windows 10 desktop online scripts
-        [parameter(ParameterSetName='Winodws 10')][switch]$windows10,
+        #[parameter(ParameterSetName='Winodws 10')][switch]$windows10,
         #windows 7 desktop online scripts
-        [parameter(ParameterSetName='Windows 7')][switch]$windows7
+        #[parameter(ParameterSetName='Windows 7')][switch]$windows7
     )
         
     Begin
     {
-        $lantrxfilelocaiton = "https://raw.githubusercontent.com/pcwork57/System-prep/master/"
+        $filelocaiton = "https://raw.githubusercontent.com/pcwork57/System-prep/rebrand/"
     }#end begin
     Process
     {
 
         switch ($PSCmdlet.ParameterSetName) {
             "Desktop" {Write-Verbose "desktop online script chosen"
-            $lantrxfile = "lantrxdesktop.ps1"}
+            $file = "onlinedesktop.ps1"}
             "Hyper-V" {Write-Verbose "hyperv online script chosen"
-            $lantrxfile = "lantrxhyperv.ps1"}
+            $file = "onlinehyperv.ps1"}
             "Server"{write-verbose "server online script chosen"
-            $lantrxfile = "lantrxserver.ps1"}
-            "Winodws 10"{write-verbose "Winodws 10 online script chosen"
-            $lantrxfile = "lantrxwindows10.ps1"}
-            "Windows 7"{write-verbose "Windows 7 online script chosen"
-            $lantrxfile = "lantrxwindows7.ps1"}
+            $file = "onlineserver.ps1"}
+            #"Winodws 10"{write-verbose "Winodws 10 online script chosen"
+            #$file = "lantrxwindows10.ps1"}
+            #"Windows 7"{write-verbose "Windows 7 online script chosen"
+            #$file = "lantrxwindows7.ps1"}
             Default {}
         }
-        $insert = "try{iex (New-Object System.Net.WebClient).DownloadString(`"$lantrxfilelocaiton$lantrxfile`")}catch{`"Error Loading Lantrx Scripts`"} "        
+        $insert = "try{iex (New-Object System.Net.WebClient).DownloadString(`"$filelocaiton$file`")}catch{`"Error Loading Online Scripts`"} "        
         try{
             if(!(test-path $PROFILE.AllUsersAllHosts)){
-                #New-Item -Path $PROFILE.AllUsersAllHosts -Type file -force -Value "iex (New-Object System.Net.WebClient).DownloadString(`"$lantrxfilelocaiton$lantrxfile`")" -ErrorAction Stop > $null
+                #New-Item -Path $PROFILE.AllUsersAllHosts -Type file -force -Value "iex (New-Object System.Net.WebClient).DownloadString(`"$filelocaiton$file`")" -ErrorAction Stop > $null
                 New-Item -Path $PROFILE.AllUsersAllHosts -Type file -force -Value $insert -ErrorAction Stop > $null
             }else{
-                if(!( gc $PROFILE.AllUsersAllHosts | Select-String $lantrxfile )){
-                    #Add-Content -Path $PROFILE.AllUsersAllHosts -Value "`r`niex (New-Object System.Net.WebClient).DownloadString(`"$lantrxfilelocaiton$lantrxfile`")" -ErrorAction Stop
+                if(!( gc $PROFILE.AllUsersAllHosts | Select-String $file )){
+                    #Add-Content -Path $PROFILE.AllUsersAllHosts -Value "`r`niex (New-Object System.Net.WebClient).DownloadString(`"$filelocaiton$file`")" -ErrorAction Stop
                     Add-Content -Path $PROFILE.AllUsersAllHosts -Value "`r`n$insert" -ErrorAction Stop
                 }else{
                     #nothing done if info exists in file
@@ -70,7 +70,7 @@ function install-lantrxonlinescripts{
 }#end function
 
 #remove powershell scripts link from powershell
-function remove-lantrxonlinescripts {
+function remove-onlinescripts {
         <#
     .SYNOPSIS
         Short description
@@ -89,37 +89,37 @@ function remove-lantrxonlinescripts {
         # Hyper-V online scripts
         [parameter(ParameterSetName='Hyper-V')][switch]$hyperv,
         # Windows server online scrips
-        [parameter(ParameterSetName='Server')][switch]$server,
+        [parameter(ParameterSetName='Server')][switch]$server
         #windows 10 desktop online scripts
-        [parameter(ParameterSetName='Winodws 10')][switch]$windows10,
+        #[parameter(ParameterSetName='Winodws 10')][switch]$windows10,
         #windows 7 desktop online scripts
-        [parameter(ParameterSetName='Windows 7')][switch]$windows7
+        #[parameter(ParameterSetName='Windows 7')][switch]$windows7
     )
     
     begin {
-        $lantrxfilelocaiton = "https://raw.githubusercontent.com/pcwork57/System-prep/master/"
+        $filelocaiton = "https://raw.githubusercontent.com/pcwork57/System-prep/rebrand/"
     }#end begin
     process {
         switch ($PSCmdlet.ParameterSetName) {
             "Desktop" {Write-Verbose "desktop online script chosen"
-            $lantrxfile = "lantrxdesktop.ps1"}
+            $file = "onlinedesktop.ps1"}
             "Hyper-V" {Write-Verbose "hyperv online script chosen"
-            $lantrxfile = "lantrxhyperv.ps1"}
+            $file = "onlinehyperv.ps1"}
             "Server"{write-verbose "server online script chosen"
-            $lantrxfile = "lantrxserver.ps1"}
-            "Winodws 10"{write-verbose "Winodws 10 online script chosen"
-            $lantrxfile = "lantrxwindows10.ps1"}
-            "Windows 7"{write-verbose "Windows 7 online script chosen"
-            $lantrxfile = "lantrxwindows7.ps1"}
+            $file = "onlineserver.ps1"}
+            #"Winodws 10"{write-verbose "Winodws 10 online script chosen"
+            #$file = "lantrxwindows10.ps1"}
+            #"Windows 7"{write-verbose "Windows 7 online script chosen"
+            #$file = "lantrxwindows7.ps1"}
             Default {}
         }
-        $insert = "try{iex (New-Object System.Net.WebClient).DownloadString(`"$lantrxfilelocaiton$lantrxfile`")}catch{`"Error Loading Lantrx Scripts`"} "
+        $insert = "try{iex (New-Object System.Net.WebClient).DownloadString(`"$filelocaiton$file`")}catch{`"Error Loading Online Scripts`"} "
 
         try {
-            $profilecontents = gc $PROFILE.AllUsersAllHosts -ErrorAction stop | Where-Object {$_ -notmatch $lantrxfile}
+            $profilecontents = gc $PROFILE.AllUsersAllHosts -ErrorAction stop | Where-Object {$_ -notmatch $file}
             if ($profilecontents) {
                 #New-Item -Path $PROFILE.AllUsersAllHosts -Type file -force -Value ($profilecontents.ToString()) -ErrorAction Stop #> $null
-                (gc $PROFILE.AllUsersAllHosts) -notmatch $lantrxfile | Out-File $PROFILE.AllUsersAllHosts
+                (gc $PROFILE.AllUsersAllHosts) -notmatch $file | Out-File $PROFILE.AllUsersAllHosts
             }else {
                 Remove-Item -Path $profile.AllUsersAllHosts -Force -ErrorAction Stop 
             }

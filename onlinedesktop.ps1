@@ -1,5 +1,5 @@
 Write-Output "!!!! Importing online PowerShell Desktop Scrips !!!!"
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinebootstrap.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/rebrand/onlinebootstrap.ps1'))
 #installed powershell scripts link into powershell 
 # pulling from onlinebootstrap.ps1
 

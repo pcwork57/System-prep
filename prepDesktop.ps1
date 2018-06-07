@@ -1,16 +1,16 @@
 #link to install boxstarter & this script
-#START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/pcwork57/System-prep/master/prepDesktop.ps1
+#START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/pcwork57/System-prep/rebrand/prepDesktop.ps1
 #allow reboot
-#START https://boxstarter.org/package/url?https://raw.githubusercontent.com/pcwork57/System-prep/master/prepDesktop.ps1
+#START https://boxstarter.org/package/url?https://raw.githubusercontent.com/pcwork57/System-prep/rebrand/prepDesktop.ps1
 #
 $env:PSExecutionPolicyPreference = "remotesigned"
 #$env:ErrorActionPreference = "Continue"
 #$ErrorActionPreference = "SilentlyContinue"
 #######download online desktop scrips########################
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinedesktop.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/rebrand/onlinedesktop.ps1'))
 #install-lantrxonlinescripts -desktop
 write-output "setting all users profile for online desktop"
-powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/onlinedesktop.ps1'));install-lantrxonlinescripts -desktop} > null
+powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/rebrand/onlinedesktop.ps1'));install-lantrxonlinescripts -desktop} > null
 
 #######install package managers########################
 
@@ -20,9 +20,9 @@ write-output "installing boxtstarter"
 
 ##### need to change to boxstarter ps1 link
 
-powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('https://boxstarter.org/bootstrapper.ps1')); get-boxstarter -Force}}
+powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/76519')); get-boxstarter -Force}}
 write-output "installing chocolatey"
-powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}}
+powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/b7804'))}}
 
 if (Test-PendingReboot) { Invoke-Reboot }
 write-output "pending reboot: $(Test-PendingReboot)"
@@ -41,9 +41,9 @@ choco source add -n=lantrx-depo -s "'http://nupkg.lantrxinc.com/repository/App_D
 
 if(!(test-path -path "c:\temp\remove.csv")){
 new-item -path c:\ -name temp -itemtype directory
-New-Item -Path c:\temp\remove.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/remove.csv')
-New-Item -Path c:\temp\install.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/install.csv')
-New-Item -path c:\temp\packages.config -type file -force -value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/packages.xml')
+New-Item -Path c:\temp\remove.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/rebrand/remove.csv')
+New-Item -Path c:\temp\install.csv -Type file -force -Value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/rebrand/install.csv')
+New-Item -path c:\temp\packages.config -type file -force -value (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/rebrand/packages.xml')
 
 install-desktop -remove -csvfile c:\temp\remove.csv -verbose
 install-desktop -install -csvfile c:\temp\install.csv -verbose
