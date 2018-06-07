@@ -20,31 +20,31 @@ function install-lantrxonlinescripts{
         # Hyper-V online scripts
         [parameter(ParameterSetName='Hyper-V')][switch]$hyperv,
         # Windows server online scrips
-        [parameter(ParameterSetName='Server')][switch]$server,
+        [parameter(ParameterSetName='Server')][switch]$server
         #windows 10 desktop online scripts
-        [parameter(ParameterSetName='Winodws 10')][switch]$windows10,
+        #[parameter(ParameterSetName='Winodws 10')][switch]$windows10,
         #windows 7 desktop online scripts
-        [parameter(ParameterSetName='Windows 7')][switch]$windows7
+        #[parameter(ParameterSetName='Windows 7')][switch]$windows7
     )
         
     Begin
     {
-        $lantrxfilelocaiton = "https://raw.githubusercontent.com/pcwork57/System-prep/master/"
+        $lantrxfilelocaiton = "https://rebrand.ly/"
     }#end begin
     Process
     {
 
         switch ($PSCmdlet.ParameterSetName) {
             "Desktop" {Write-Verbose "desktop online script chosen"
-            $lantrxfile = "lantrxdesktop.ps1"}
+            $lantrxfile = "b1803"}
             "Hyper-V" {Write-Verbose "hyperv online script chosen"
-            $lantrxfile = "lantrxhyperv.ps1"}
+            $lantrxfile = "b6f0c"}
             "Server"{write-verbose "server online script chosen"
-            $lantrxfile = "lantrxserver.ps1"}
-            "Winodws 10"{write-verbose "Winodws 10 online script chosen"
-            $lantrxfile = "lantrxwindows10.ps1"}
-            "Windows 7"{write-verbose "Windows 7 online script chosen"
-            $lantrxfile = "lantrxwindows7.ps1"}
+            $lantrxfile = "bd6c0"}
+            #"Winodws 10"{write-verbose "Winodws 10 online script chosen"
+            #$lantrxfile = "lantrxwindows10.ps1"}
+            #"Windows 7"{write-verbose "Windows 7 online script chosen"
+            #$lantrxfile = "lantrxwindows7.ps1"}
             Default {}
         }
         $insert = "try{iex (New-Object System.Net.WebClient).DownloadString(`"$lantrxfilelocaiton$lantrxfile`")}catch{`"Error Loading Lantrx Scripts`"} "        
@@ -89,28 +89,28 @@ function remove-lantrxonlinescripts {
         # Hyper-V online scripts
         [parameter(ParameterSetName='Hyper-V')][switch]$hyperv,
         # Windows server online scrips
-        [parameter(ParameterSetName='Server')][switch]$server,
+        [parameter(ParameterSetName='Server')][switch]$server
         #windows 10 desktop online scripts
-        [parameter(ParameterSetName='Winodws 10')][switch]$windows10,
+        #[parameter(ParameterSetName='Winodws 10')][switch]$windows10,
         #windows 7 desktop online scripts
-        [parameter(ParameterSetName='Windows 7')][switch]$windows7
+        #[parameter(ParameterSetName='Windows 7')][switch]$windows7
     )
     
     begin {
-        $lantrxfilelocaiton = "https://raw.githubusercontent.com/pcwork57/System-prep/master/"
+        $lantrxfilelocaiton = "https://rebrand.ly/"
     }#end begin
     process {
         switch ($PSCmdlet.ParameterSetName) {
             "Desktop" {Write-Verbose "desktop online script chosen"
-            $lantrxfile = "lantrxdesktop.ps1"}
+            $lantrxfile = "b1803"}
             "Hyper-V" {Write-Verbose "hyperv online script chosen"
-            $lantrxfile = "lantrxhyperv.ps1"}
+            $lantrxfile = "b6f0c"}
             "Server"{write-verbose "server online script chosen"
-            $lantrxfile = "lantrxserver.ps1"}
-            "Winodws 10"{write-verbose "Winodws 10 online script chosen"
-            $lantrxfile = "lantrxwindows10.ps1"}
-            "Windows 7"{write-verbose "Windows 7 online script chosen"
-            $lantrxfile = "lantrxwindows7.ps1"}
+            $lantrxfile = "bd6c0"}
+            #"Winodws 10"{write-verbose "Winodws 10 online script chosen"
+            #$lantrxfile = "lantrxwindows10.ps1"}
+            #"Windows 7"{write-verbose "Windows 7 online script chosen"
+            #$lantrxfile = "lantrxwindows7.ps1"}
             Default {}
         }
         $insert = "try{iex (New-Object System.Net.WebClient).DownloadString(`"$lantrxfilelocaiton$lantrxfile`")}catch{`"Error Loading Lantrx Scripts`"} "
