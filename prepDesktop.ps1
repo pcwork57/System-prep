@@ -7,19 +7,19 @@ $env:PSExecutionPolicyPreference = "remotesigned"
 #$env:ErrorActionPreference = "Continue"
 #$ErrorActionPreference = "SilentlyContinue"
 #######download lantrx desktop scrips########################
-iex ((New-Object System.Net.WebClient).DownloadString('rebrand.ly/b1803'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/b1803'))
 #install-lantrxonlinescripts -desktop
 write-output "setting all users profile for lantrx desktop"
-powershell {iex ((New-Object System.Net.WebClient).DownloadString('rebrand.ly/b1803'));install-lantrxonlinescripts -desktop} > null
+powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/b1803'));install-lantrxonlinescripts -desktop} > null
 
 #######install package managers########################
 
 write-output "setting execution policy remotesigned"
 powershell {set-ExecutionPolicy remotesigned -Force}
 write-output "installing boxtstarter"
-powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('http://help.lantrxinc.com/powershell/bootstrapper.ps1')); get-boxstarter -Force}}
+powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/76519')); get-boxstarter -Force}}
 write-output "installing chocolatey"
-powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))}}
+powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/b7804'))}}
 
 if (Test-PendingReboot) { Invoke-Reboot }
 write-output "pending reboot: $(Test-PendingReboot)"
