@@ -7,10 +7,10 @@ $env:PSExecutionPolicyPreference = "remotesigned"
 #$env:ErrorActionPreference = "Continue"
 #$ErrorActionPreference = "SilentlyContinue"
 #######download lantrx desktop scrips########################
-iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/b1803'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'))
 #install-lantrxonlinescripts -desktop
 write-output "setting all users profile for lantrx desktop"
-powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/b1803'));install-lantrxonlinescripts -desktop} > null
+powershell {iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/pcwork57/System-prep/master/lantrxdesktop.ps1'));install-lantrxonlinescripts -desktop} > null
 
 #######install package managers########################
 
