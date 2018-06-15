@@ -1,3 +1,4 @@
 Installpath,argumentslist,notes
 "C:\Program Files\Microsoft Security Client\Setup.exe","/x",uninstall microsoft security client
 "C:\Program Files\Common Files\Microsoft Shared\ClickToRun\OfficeClickToRun.exe","scenario=install scenariosubtype=uninstall productstoremove=O365HomePremRetail.16_en-us_x-none culture=en-us",uninstall office 365
+C:\Program Files\McAfee\MSC\mcuihost.exe,/body:misp://MSCJsRes.dll::uninstall.html /id:uninstall,we don't want
