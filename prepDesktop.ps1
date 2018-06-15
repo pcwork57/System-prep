@@ -67,6 +67,16 @@ remove-item c:\temp\install.csv
 #clean up desktop
 Remove-Item C:\Users\Public\Desktop\Skype*.lnk -Force
 Remove-Item 'C:\Users\Public\Desktop\HP Touchpoint*.lnk' -force
+remove-item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Access 2016.lnk" -force
+remove-item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel 2016.lnk" -force
+remove-item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\OneNote 2016.lnk" -force
+remove-item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Outlook 2016.lnk" -force
+remove-item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerPoint 2016.lnk" -force
+remove-item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Publisher 2016.lnk" -force
+remove-item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Word 2016.lnk" -force
+remove-item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Windows Media Player.lnk" -force
+remove-item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\McAfee" -force -Recurse
+remove-item "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Office 2016 Tools" -force -Recurse
 
 if (Test-PendingReboot) { Invoke-Reboot }
 
