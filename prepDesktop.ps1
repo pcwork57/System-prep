@@ -55,6 +55,7 @@ if (Test-PendingReboot) { Invoke-Reboot }
 choco install -y googlechrome --ignore-checksum
 choco install -y 7zip.install --ignore-checksum
 choco install -y powershell --ignore-checksum
+choco install -y adobereader --ignore-checksum
 
 #clean up download files
 remove-item c:\temp\packages.config

@@ -3,5 +3,6 @@
     <package id="7zip.install" />
     <package id="googlechrome" />
     <package id="powershell" />
+    <package id="adobereader" />
   </packages>
 </xml>
