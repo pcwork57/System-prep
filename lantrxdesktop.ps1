@@ -1081,7 +1081,6 @@ function Get-lantrxagent{
 #>
 	
 	[CmdletBinding(ConfirmImpact = 'Low',
-				   PositionalBinding = $false,
 				   SupportsShouldProcess = $true)]
 	[OutputType([void])]
 	param
