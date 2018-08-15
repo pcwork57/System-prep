@@ -78,9 +78,9 @@ function new-lantrxhyperv
 				   Position = 0)]
 		[Alias('newcomputername')]
 		[string]$newname = 'Hyperv001',
-		[Parameter(Mandatory = $true,
+		[Parameter(Mandatory = $false,
 				   Position = 1)]
-		[char]$datadriveletter = "D"
+		[char]$datadriveletter
 	)
 	
 	Begin
@@ -115,24 +115,23 @@ function new-lantrxhyperv
 			#Set-NetAdapterVmq -Name "NIC 1? -Enabled $False
 			#Set-NetAdapterVmq -Name "NIC 2? -Enabled $False
 			
-			
-			<#
-			$disk = get-disk | ?{ $_.PartitionStyle -eq "RAW" }
-			$driveletter = $datadriveletter
-			Write-Verbose "init HDD"
-			$disk | initialize-disk -PartitionStyle GPT
-			Write-Verbose "creating parttion pon HDD and assigning drive letter $datadriveletter"
-			$disk | new-partition -usemaximumsize -DriveLetter $driveletter
-			Write-Verbose "labeling partion as vm-data"
-			format-volume -driveletter $driveletter -FileSystem NTFS -NewFileSystemLabel "vm-data" -Confirm:$false
-			
-			Write-Verbose "creating vm folder for virtual guests"
-			$vmpath = New-Item -ItemType directory -Path "$driveletter"+":\VMs"
-			Write-Verbose "creating ISO folder"
-			$isopath = New-Item -ItemType directory -Path "$driveletter"+":\iso"
-			Write-Verbose "sharing iso folder"
-			New-SmbShare -Name ISO -Path "$driveletter"+":\iso" -FullAccess administrator
-			#>
+			if($datadriveletter){
+				$disk = get-disk | ?{ $_.PartitionStyle -eq "RAW" }
+				$driveletter = $datadriveletter
+				Write-Verbose "init HDD"
+				$disk | initialize-disk -PartitionStyle GPT
+				Write-Verbose "creating parttion pon HDD and assigning drive letter $datadriveletter"
+				$disk | new-partition -usemaximumsize -DriveLetter $driveletter
+				Write-Verbose "labeling partion as vm-data"
+				format-volume -driveletter $driveletter -FileSystem NTFS -NewFileSystemLabel "vm-data" -Confirm:$false
+				
+				Write-Verbose "creating vm folder for virtual guests"
+				$vmpath = New-Item -ItemType directory -Path "$driveletter"+":\VMs"
+				Write-Verbose "creating ISO folder"
+				$isopath = New-Item -ItemType directory -Path "$driveletter"+":\iso"
+				Write-Verbose "sharing iso folder"
+				New-SmbShare -Name ISO -Path "$driveletter"+":\iso" -FullAccess administrator
+			}#end if datadrive
 		} #end if shouldprocess
 	} #end process
 	End
