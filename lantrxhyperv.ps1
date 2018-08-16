@@ -145,7 +145,7 @@ function Set-IPAddress {
 		[string]$mask = $(read-host "Enter the subnet mask (ie 255.255.255.0)"),
 		[string]$gateway = $(read-host "Enter the current name of the NIC you want to rename"),
 		[string]$dns1 = $(read-host "Enter the first DNS Server (ie 10.2.0.28)"),
-		[string]$dns2 = "8.8.8.8"
+		[string]$dns2 = "8.8.8.8",
 		[string]$registerDns = "TRUE"
 	 )
 	$dns = $dns1
