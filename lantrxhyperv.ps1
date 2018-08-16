@@ -142,21 +142,39 @@ function new-lantrxhyperv
 function Set-IPAddress {
 	param(	[string]$networkinterface =$(read-host "Enter the name of the NIC (ie Local Area Connection)"),
 		[string]$ip = $(read-host "Enter an IP Address (ie 10.10.10.10)"),
-		[string]$mask = $(read-host "Enter the subnet mask (ie 255.255.255.0)"),
-		[string]$gateway = $(read-host "Enter the current name of the NIC you want to rename"),
+		[string]$MaskBits = $(read-host "Enter the subnet mask (ie 24)"),
+		[string]$gateway = $(read-host "Enter the gateway IP address (ie 10.10.10.10)"),
 		[string]$dns1 = $(read-host "Enter the first DNS Server (ie 10.2.0.28)"),
 		[string]$dns2 = "8.8.8.8",
-		[string]$registerDns = "TRUE"
+		[string]$registerDns = "FALSE"
 	 )
-	$dns = $dns1
-	if($dns2){$dns ="$dns1,$dns2"}
-	$index = (gwmi Win32_NetworkAdapter | where {$_.netconnectionid -eq $networkinterface}).InterfaceIndex
-	$NetInterface = Get-WmiObject Win32_NetworkAdapterConfiguration | where {$_.InterfaceIndex -eq $index}
-	$NetInterface.EnableStatic($ip, $subnetmask)
-	$NetInterface.SetGateways($gateway)
-	$NetInterface.SetDNSServerSearchOrder($dns)
-	$NetInterface.SetDynamicDNSRegistration($registerDns)
-	
+
+	 $IPType = "IPv4"
+	 if($dns2){$dns ="$dns1,$dns2"}
+	# Retrieve the network adapter that you want to configure
+	#$adapter = Get-NetAdapter | ? {$_.Status -eq "up"}
+	$adapter = Get-NetAdapter -name $networkinterface
+
+	# Remove any existing IP, gateway from our ipv4 adapter
+	If (($adapter | Get-NetIPConfiguration).IPv4Address.IPAddress) {
+		$adapter | Remove-NetIPAddress -AddressFamily $IPType -Confirm:$false
+	}
+
+	If (($adapter | Get-NetIPConfiguration).Ipv4DefaultGateway) {
+		$adapter | Remove-NetRoute -AddressFamily $IPType -Confirm:$false
+	}
+
+	if($adapter){
+		# Configure the IP address and default gateway
+		$adapter | New-NetIPAddress `
+			-AddressFamily $IPType `
+			-IPAddress $IP `
+			-PrefixLength $MaskBits `
+			-DefaultGateway $Gateway
+
+		# Configure the DNS client server IP addresses
+		$adapter | Set-DnsClientServerAddress -ServerAddresses $DNS
+	}
 }
 
 write-output "!!!! Finished installing scripts from Lantrx !!!!"
