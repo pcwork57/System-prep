@@ -782,4 +782,38 @@ function Get-uptime{
 }
 
 
+#### can be cleaned up and changed to a default group
+function get-winver{
+    <#
+	.SYNOPSIS
+		get's Windows version
+	
+	.DESCRIPTION
+		get's all windows information needed for ID
+	
+	.EXAMPLE
+				PS C:\> Get-winver
+	
+	.NOTES
+		Additional information about the function.
+#>
+
+    <#
+    (Get-WmiObject -class Win32_OperatingSystem).Caption
+    [System.Environment]::OSVersion.Version
+    [Environment]::OSVersion
+    
+    $name=(Get-WmiObject Win32_OperatingSystem).caption
+     $bit=(Get-WmiObject Win32_OperatingSystem).OSArchitecture
+     $ver=(Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ReleaseId
+     Write-Host $name, $bit, $ver
+    
+    #>
+    systeminfo /fo csv | ConvertFrom-Csv | select OS*, System*, Hotfix* | Format-List
+}
+    
+
+
+
+
 write-output "!!!! Finished installing scripts from Lantrx !!!!"
