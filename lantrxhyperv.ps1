@@ -1,6 +1,8 @@
 Write-Output "!!!! Importing Lantrx PowerShell Hyper-V Scrips !!!!"
 #load bootstrap url
 iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/c7cfd'))
+#load server url
+iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/bd6c0'))
 
 #preps a new blank drive for backups
 function new-backupdrive {

