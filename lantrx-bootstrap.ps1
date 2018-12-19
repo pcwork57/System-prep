@@ -20,9 +20,9 @@ function install-lantrxonlinescripts{
         # Hyper-V online scripts
         [parameter(ParameterSetName='Hyper-V')][switch]$hyperv,
         # Windows server online scrips
-        [parameter(ParameterSetName='Server')][switch]$server
-        #windows 10 desktop online scripts
-        #[parameter(ParameterSetName='Winodws 10')][switch]$windows10,
+        [parameter(ParameterSetName='Server')][switch]$server,
+        #Exchange online scripts
+        [parameter(ParameterSetName='Exchange')][switch]$exchange
         #windows 7 desktop online scripts
         #[parameter(ParameterSetName='Windows 7')][switch]$windows7
     )
@@ -41,8 +41,8 @@ function install-lantrxonlinescripts{
             $lantrxfile = "b6f0c"}
             "Server"{write-verbose "server online script chosen"
             $lantrxfile = "bd6c0"}
-            #"Winodws 10"{write-verbose "Winodws 10 online script chosen"
-            #$lantrxfile = "lantrxwindows10.ps1"}
+            "Exchange"{write-verbose "exchange online script chosen"
+            $lantrxfile = "bd6c0"}
             #"Windows 7"{write-verbose "Windows 7 online script chosen"
             #$lantrxfile = "lantrxwindows7.ps1"}
             Default {}
@@ -89,9 +89,9 @@ function remove-lantrxonlinescripts {
         # Hyper-V online scripts
         [parameter(ParameterSetName='Hyper-V')][switch]$hyperv,
         # Windows server online scrips
-        [parameter(ParameterSetName='Server')][switch]$server
-        #windows 10 desktop online scripts
-        #[parameter(ParameterSetName='Winodws 10')][switch]$windows10,
+        [parameter(ParameterSetName='Server')][switch]$server,
+        #exchnage online scripts
+        [parameter(ParameterSetName='Exchange')][switch]$exchange,
         #windows 7 desktop online scripts
         #[parameter(ParameterSetName='Windows 7')][switch]$windows7
     )
@@ -107,8 +107,8 @@ function remove-lantrxonlinescripts {
             $lantrxfile = "b6f0c"}
             "Server"{write-verbose "server online script chosen"
             $lantrxfile = "bd6c0"}
-            #"Winodws 10"{write-verbose "Winodws 10 online script chosen"
-            #$lantrxfile = "lantrxwindows10.ps1"}
+            "Exchange"{write-verbose "exchange script chosen"
+            $lantrxfile = "bd6c0"}
             #"Windows 7"{write-verbose "Windows 7 online script chosen"
             #$lantrxfile = "lantrxwindows7.ps1"}
             Default {}
