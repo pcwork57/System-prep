@@ -91,7 +91,7 @@ function remove-lantrxonlinescripts {
         # Windows server online scrips
         [parameter(ParameterSetName='Server')][switch]$server,
         #exchnage online scripts
-        [parameter(ParameterSetName='Exchange')][switch]$exchange,
+        [parameter(ParameterSetName='Exchange')][switch]$exchange
         #windows 7 desktop online scripts
         #[parameter(ParameterSetName='Windows 7')][switch]$windows7
     )
