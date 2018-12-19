@@ -20,9 +20,9 @@ function install-onlinescripts{
         # Hyper-V online scripts
         [parameter(ParameterSetName='Hyper-V')][switch]$hyperv,
         # Windows server online scrips
-        [parameter(ParameterSetName='Server')][switch]$server
-        #windows 10 desktop online scripts
-        #[parameter(ParameterSetName='Winodws 10')][switch]$windows10,
+        [parameter(ParameterSetName='Server')][switch]$server,
+        # Exchange online scripts
+        [parameter(ParameterSetName='Exchange')][switch]$Exchange
         #windows 7 desktop online scripts
         #[parameter(ParameterSetName='Windows 7')][switch]$windows7
     )
@@ -41,8 +41,8 @@ function install-onlinescripts{
             $file = "onlinehyperv.ps1"}
             "Server"{write-verbose "server online script chosen"
             $file = "onlineserver.ps1"}
-            #"Winodws 10"{write-verbose "Winodws 10 online script chosen"
-            #$file = "lantrxwindows10.ps1"}
+            "Exchange"{write-verbose "Winodws 10 online script chosen"
+            $file = "onlineexchange.ps1"}
             #"Windows 7"{write-verbose "Windows 7 online script chosen"
             #$file = "lantrxwindows7.ps1"}
             Default {}
@@ -89,9 +89,9 @@ function remove-onlinescripts {
         # Hyper-V online scripts
         [parameter(ParameterSetName='Hyper-V')][switch]$hyperv,
         # Windows server online scrips
-        [parameter(ParameterSetName='Server')][switch]$server
-        #windows 10 desktop online scripts
-        #[parameter(ParameterSetName='Winodws 10')][switch]$windows10,
+        [parameter(ParameterSetName='Server')][switch]$server,
+        #Exchange online scripts
+        [parameter(ParameterSetName='Exchange')][switch]$Exchange
         #windows 7 desktop online scripts
         #[parameter(ParameterSetName='Windows 7')][switch]$windows7
     )
@@ -107,8 +107,8 @@ function remove-onlinescripts {
             $file = "onlinehyperv.ps1"}
             "Server"{write-verbose "server online script chosen"
             $file = "onlineserver.ps1"}
-            #"Winodws 10"{write-verbose "Winodws 10 online script chosen"
-            #$file = "lantrxwindows10.ps1"}
+            "Exchnage"{write-verbose "Exchange online script chosen"
+            $file = "onlineexchange.ps1"}
             #"Windows 7"{write-verbose "Windows 7 online script chosen"
             #$file = "lantrxwindows7.ps1"}
             Default {}
