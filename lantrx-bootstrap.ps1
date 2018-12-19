@@ -42,7 +42,7 @@ function install-lantrxonlinescripts{
             "Server"{write-verbose "server online script chosen"
             $lantrxfile = "bd6c0"}
             "Exchange"{write-verbose "exchange online script chosen"
-            $lantrxfile = "bd6c0"}
+            $lantrxfile = "9c66e"}
             #"Windows 7"{write-verbose "Windows 7 online script chosen"
             #$lantrxfile = "lantrxwindows7.ps1"}
             Default {}
@@ -108,7 +108,7 @@ function remove-lantrxonlinescripts {
             "Server"{write-verbose "server online script chosen"
             $lantrxfile = "bd6c0"}
             "Exchange"{write-verbose "exchange script chosen"
-            $lantrxfile = "bd6c0"}
+            $lantrxfile = "9c66e"}
             #"Windows 7"{write-verbose "Windows 7 online script chosen"
             #$lantrxfile = "lantrxwindows7.ps1"}
             Default {}
