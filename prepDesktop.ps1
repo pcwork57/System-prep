@@ -85,6 +85,10 @@ write-output "scrubing windows 10 running in seperate windows due to boxstarter 
 Start-Process -FilePath "powershell" -ArgumentList '-command "&clean-win10scrub' -WindowStyle Normal -Wait
 #clean-win10scrub
 #powershell {clean-win10scrub}
+#disables memory compression
+Disable-MMAgent -MemoryCompression
+#enables memory compression
+#Enable-MMAgent -MemoryCompression
 
 write-output "clearing start menu"
 powershell {Clean-win10startmenu}
