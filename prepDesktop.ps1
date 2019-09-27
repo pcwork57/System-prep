@@ -21,6 +21,13 @@ powershell {if(!(Test-Path "C:\ProgramData\Boxstarter\BoxstarterShell.ps1")){iex
 write-output "installing chocolatey"
 powershell {if(!(Test-Path "C:\ProgramData\chocolatey\choco.exe")){iex ((New-Object System.Net.WebClient).DownloadString('https://rebrand.ly/b7804'))}}
 
+###### power settings
+powercfg.exe /CHANGE standby-timeout-ac 0
+powercfg.exe /CHANGE standby-timeout-dc 0
+powercfg.exe /CHANGE hibernate-timeout-ac 0
+powercfg.exe /CHANGE hibernate-timeout-dc 0
+powercfg.exe /h off
+
 if (Test-PendingReboot) { Invoke-Reboot }
 write-output "pending reboot: $(Test-PendingReboot)"
 
