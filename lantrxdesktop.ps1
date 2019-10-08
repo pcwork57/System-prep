@@ -1150,8 +1150,8 @@ function Get-ntragent{
 	.PARAMETER nobits
 		disables bits transfer
 	
-	.PARAMETER probe
-		will download the probe for customer NOT the agent
+	.PARAMETER start
+		will start the ntr agent after the download
 	
 	.EXAMPLE
 		Downloads agent using Bits
@@ -1201,7 +1201,7 @@ function Get-ntragent{
 		[Alias('id')]
 		[int]$supportnumber,
 		[switch]$nobits,
-		[switch]$probe
+		[switch]$start
 	)
 	
 	Begin
@@ -1215,18 +1215,10 @@ function Get-ntragent{
 			$output = (Get-Location).path
 			$output += '\ntrcloud_https_en_' + $supportnumber.ToString()
 			
-			if ($probe)
-			{
-				$url = "https://app.ntrglobal.com/en/code/$supportnumber"
-				Write-Verbose "probe url: $url"
-				$output += ".exe"
-			}
-			else
-			{
-				$url = "https://app.ntrglobal.com/en/code/$supportnumber"
-				Write-Verbose "agent url: $url"
-				$output += ".exe"
-			}
+			$url = "https://app.ntrglobal.com/en/code/$supportnumber"
+			Write-Verbose "probe url: $url"
+			$output += ".exe"
+
 			Write-Verbose "output file: $output"
 			if ($nobits)
 			{
@@ -1237,12 +1229,15 @@ function Get-ntragent{
 				Import-Module BitsTransfer
 				Start-BitsTransfer -Source $url -Destination $output
 			}
+			if ($start)
+			{
+				start-process $output
+			}
 		} #end if shouldprocess
 	} #end process
 	End
 	{
 	} #end end
 } #end function
-
 write-output "!!!! Finished installing scripts from Lantrx !!!!"
 Write-Output "!!!! All scripts are Require Powershell V3 or higher !!!!"
