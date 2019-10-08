@@ -1136,5 +1136,113 @@ function Get-lantrxagent{
 	} #end end
 } #end function
 
+function Get-ntragent{
+<#
+	.Synopsis
+		Downloads ntr agent
+	
+	.DESCRIPTION
+		Downloads  agent into the current folder
+	
+	.PARAMETER supportnumber
+		Customer ID from ntr setup
+	
+	.PARAMETER nobits
+		disables bits transfer
+	
+	.PARAMETER probe
+		will download the probe for customer NOT the agent
+	
+	.EXAMPLE
+		Downloads agent using Bits
+		Get-ntragent -supportnumber 1
+	
+	.EXAMPLE
+		Downloads agent using WebClient	
+		Get-ntragent -supportnumber 1 -nobits
+	
+	.EXAMPLE
+		Downloads probe using Bits
+		Get-ntragent -supportnumber 1 -probe
+	
+	.EXAMPLE
+		Downloads probe using WebClient	
+		Get-ntragent -supportnumber 1 -probe -nobits
+	
+	.OUTPUTS
+		Output from this cmdlet (if any)
+	
+	.NOTES
+		General notes
+	
+	.INPUTS
+		Inputs to this cmdlet (if any)
+	
+	.COMPONENT
+		The component this cmdlet belongs to
+	
+	.ROLE
+		The role this cmdlet belongs to
+	
+	.FUNCTIONALITY
+		The functionality that best describes this cmdlet
+#>
+	
+	[CmdletBinding(ConfirmImpact = 'Low',
+				   SupportsShouldProcess = $true)]
+	[OutputType([void])]
+	param
+	(
+		[Parameter(Mandatory = $true,
+				   ValueFromPipeline = $true,
+				   ValueFromPipelineByPropertyName = $true,
+				   ValueFromRemainingArguments = $false,
+				   Position = 0)]
+		[Alias('id')]
+		[int]$supportnumber,
+		[switch]$nobits,
+		[switch]$probe
+	)
+	
+	Begin
+	{
+	} #end begin
+	Process
+	{
+		if ($pscmdlet.ShouldProcess("localhost", "Will Downlaod ntr agent to current directory"))
+		{
+			Write-Verbose "Downloading ntr agent"
+			$output = (Get-Location).path
+			$output += '\ntrcloud_https_en_' + $supportnumber.ToString()
+			
+			if ($probe)
+			{
+				$url = "https://app.ntrglobal.com/en/code/$supportnumber"
+				Write-Verbose "probe url: $url"
+				$output += ".exe"
+			}
+			else
+			{
+				$url = "https://app.ntrglobal.com/en/code/$supportnumber"
+				Write-Verbose "agent url: $url"
+				$output += ".exe"
+			}
+			Write-Verbose "output file: $output"
+			if ($nobits)
+			{
+				(New-Object System.Net.WebClient).DownloadFile($url, $output)
+			}
+			else
+			{
+				Import-Module BitsTransfer
+				Start-BitsTransfer -Source $url -Destination $output
+			}
+		} #end if shouldprocess
+	} #end process
+	End
+	{
+	} #end end
+} #end function
+
 write-output "!!!! Finished installing scripts from Lantrx !!!!"
 Write-Output "!!!! All scripts are Require Powershell V3 or higher !!!!"
