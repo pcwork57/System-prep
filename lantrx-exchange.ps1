@@ -174,7 +174,7 @@ $shadowscript = $shadowscript + "delete shadows volume $($drive):`r`n"
 }#end foreach drives
 
 Set-Content -Path $cmdlocation -Value $shadowscript
-Start-Process -FilePath diskshadow -ArgumentList "/s $cmdlocation" -wait
+Start-Process -FilePath diskshadow -ArgumentList "/s $cmdlocation" -wait -WindowStyle Hidden
 remove-item -path $cmdlocation
 }
 
