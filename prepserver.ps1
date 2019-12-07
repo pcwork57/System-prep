@@ -6,7 +6,7 @@
 #Install-BoxstarterPackage -PackageName "MyPackage1","MyPackage2" -Credential $cred
 
 
-Install-WindowsUpdate -AcceptEula -full
+#Install-WindowsUpdate -AcceptEula -full
 if (Test-PendingReboot) { Invoke-Reboot }
 
 choco install googlechrome
