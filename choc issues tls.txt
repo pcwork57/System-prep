@@ -1,0 +1,11 @@
+issue:
+Exception calling "DownloadString" with "1" argument(s): "The underlying connection was closed: Could not establish
+trust relationship for the SSL/TLS secure channel."
+At line:1 char:1
++ iex ((New-Object System.Net.WebClient).DownloadString('https://rebran ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : WebException
+    
+FIX:
+[System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
