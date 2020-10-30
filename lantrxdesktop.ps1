@@ -771,7 +771,7 @@ Get-AppxPackage -AllUsers | ? {$_.name -notlike "*store*"} | Remove-AppxPackage 
 # Remove-Item -Path C:\Mnt -Recurse
 
 # Uninstall Windows Media Player
-Write-Host "Uninstalling Windows Media Player..."
+#Write-Host "Uninstalling Windows Media Player..."
 #dism /online /Disable-Feature /FeatureName:MediaPlayback /Quiet /NoRestart
 
 # Install Windows Media Player
